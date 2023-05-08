@@ -1,0 +1,62 @@
+.header-big{
+    margin-bottom: 20px;
+    /* position: fixed; */
+    /* width: 100%; */
+    /* z-index: 999; */
+}
+.header-biga{
+  margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+.el-dropdown-menu{
+    width: 100px;
+    display: flex;
+    /* justify-content: space-around; */
+    flex-direction: column;
+}
+.el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+.el-header{
+    background: white;
+    /* height: 60px; */
+}
+.header-content{
+    /* background: beige; */
+    display: -webkit-box;
+    /* height: 80px; */
+}
+
+.header-right{
+    display: flex;
+    line-height: 4;
+    align-items: center;
+}
+.header-left{
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+.header-left-all {
+  display: flex;
+  justify-content: space-around;
+  line-height: 2;
+  align-items: center;
+  height: 100%;
+}
+.itema {
+  /* margin-top: 20px; */
+  margin-right: 40px;
+}
+.el-link{
+  margin-right: 0 !important;
+}
+.el-badge__content.is-fixed{
+  top: 10px;
+}
