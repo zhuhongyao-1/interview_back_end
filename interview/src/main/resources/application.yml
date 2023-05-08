@@ -1,0 +1,43 @@
+#端口号
+server:
+  port: 3001
+#数据库的配置信息
+spring:
+  datasource:
+    # mysql5.x 配置，高版本需要加useSSL=false
+    #url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false
+    # mysql8.0 需要加&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/interview?zeroDateTimeBehavior=convertToNull&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 12345678
+    # mysql8.0 驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # mysql5.x 驱动
+    #driver-class-name: com.mysql.jdbc.Driver
+    #Druid#
+    name: test
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      # 删除前
+      logic-not-delete-value: 1
+      # 删除后
+      logic-delete-value: 0
+
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    keyId: LTAI5tFKvZxaHAeVq7rqmc6c
+    keySecret: gENhwGLBCTY54VD2OG3XNDGvPLZDYD
+    bucketName: srbtest1

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhy.interview.mapper.ReplyMapper">
+
+    <resultMap type="com.zhy.interview.entity.Reply" id="ReplyMap">
+        <result property="id" column="id"/>
+        <result property="replyContent" column="reply_content"/>
+        <result property="replyTime" column="reply_time"/>
+        <result property="remarkId" column="remark_id"/>
+    </resultMap>
+</mapper>
+
