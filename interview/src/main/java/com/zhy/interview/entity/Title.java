@@ -31,7 +31,6 @@ public class Title  {
     @TableId(value="id",type=IdType.AUTO)
     private Integer id;
 
-    
     private String questionType;
     
     private String difficulty;

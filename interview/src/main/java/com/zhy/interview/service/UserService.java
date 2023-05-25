@@ -19,5 +19,6 @@ import java.util.List;
 public interface UserService extends IService<User> {
 
 
+    List<Title> seeValue(String userId);
 }
 

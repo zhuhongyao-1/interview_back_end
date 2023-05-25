@@ -11,32 +11,28 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 /**
- * (Tespaper)表实体类
+ * (ViewRecord)表实体类
  *
  * @author makejava
- * @since 2023-05-07 21:23:59
+ * @since 2023-05-15 20:49:30
  */
 @SuppressWarnings("serial")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("test_paper")
-public class TestPaper {
-    //
+@TableName("view_record")
+public class ViewRecord  {
+
     @TableId(value="id",type=IdType.AUTO)
     private Integer id;
-
-    private String tags;
-    
-    private String title;
-    
-    private String img;
     
     private Integer userId;
+    
+    private Integer titleId;
 
     private Date createTime;
 
-    private Integer viewNum;
+    private Date updateTime;
 
 
 

@@ -20,5 +20,11 @@ public interface TitleService extends IService<Title> {
     List<Title> getTitleListbyLike(String[] split,String questionType,Title title);
 
     List<Title> queryByCondition(QueryVo queryVo);
+
+    List<Title> getTitleListByBatchTitleId(List<Integer> titleId);
+
+    List<Title> getTitleListByUserId(String userId);
+
+    List<Title> getTitleListByUserIdAndKeyWord(String userId, String sha);
 }
 

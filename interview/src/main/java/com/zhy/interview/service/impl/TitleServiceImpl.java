@@ -84,5 +84,21 @@ public class TitleServiceImpl extends ServiceImpl<TitleMapper, Title> implements
         }
         return titleList;
     }
+
+    @Override
+    public List<Title> getTitleListByBatchTitleId(List<Integer> titleId) {
+        return baseMapper.selectBatchIds(titleId);
+    }
+
+    @Override
+    public List<Title> getTitleListByUserId(String userId) {
+        return baseMapper.selectList(new QueryWrapper<Title>().eq("user_id", userId).orderByDesc("create_time"));
+    }
+
+    @Override
+    public List<Title> getTitleListByUserIdAndKeyWord(String userId, String sha) {
+        return baseMapper.selectList(new QueryWrapper<Title>().eq("user_id", userId).and(item->item.like("title_name", sha).or().like("explains", sha)));
+
+    }
 }
 

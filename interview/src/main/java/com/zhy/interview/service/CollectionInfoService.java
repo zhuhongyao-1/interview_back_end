@@ -3,6 +3,7 @@ package com.zhy.interview.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zhy.interview.entity.CollectionInfo;
 
+import java.util.List;
 
 
 /**
@@ -13,5 +14,6 @@ import com.zhy.interview.entity.CollectionInfo;
  */
 public interface CollectionInfoService extends IService<CollectionInfo> {
 
+    List<CollectionInfo> getCollectionInfoByUserId(String userId);
 }
 

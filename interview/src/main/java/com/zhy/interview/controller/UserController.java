@@ -20,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @date: 223/4/22 16:32
@@ -41,6 +43,43 @@ public class UserController {
 
     @Resource
     private CollectionInfoService collectionInfoService;
+
+
+
+
+    @GetMapping("/seeValue")
+    public R seeValue(String userId){
+       List<Title> titleList= userService.seeValue(userId);
+        return R.ok().setData(titleList);
+    }
+
+    @GetMapping("/all")
+    public R all(String userId,String sha){
+       List<Title> titleList=  titleService.getTitleListByUserIdAndKeyWord(userId,sha);
+        return R.ok().setData(titleList);
+    }
+
+
+    @GetMapping("/delete")
+    public R delete(Integer titleId){
+        log.info("titleId:{}",titleId);
+        titleService.removeById(titleId);
+        return R.ok();
+    }
+
+    @GetMapping("/uploadSubject")
+    public R uploadSubject(String userId){
+        List<Title> titleList= titleService.getTitleListByUserId(userId);
+        return R.ok().setData(titleList);
+    }
+
+    @GetMapping("/collectionValue")
+    public R collectionValue(String userId){
+        List<CollectionInfo> collectionInfoList= collectionInfoService.getCollectionInfoByUserId(userId);
+        List<Integer> titleId = collectionInfoList.stream().map(CollectionInfo::getTitleid).collect(Collectors.toList());
+        List<Title> titleList=titleService.getTitleListByBatchTitleId(titleId);
+        return R.ok().setData(titleList);
+    }
 
 
 

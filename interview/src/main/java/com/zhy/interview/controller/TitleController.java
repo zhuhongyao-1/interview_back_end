@@ -2,10 +2,13 @@ package com.zhy.interview.controller;
 
 import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zhy.interview.entity.Title;
 import com.zhy.interview.entity.User;
+import com.zhy.interview.entity.ViewRecord;
 import com.zhy.interview.service.TitleService;
 import com.zhy.interview.service.UserService;
+import com.zhy.interview.service.ViewRecordService;
 import com.zhy.interview.utils.R;
 import com.zhy.interview.vo.QueryVo;
 import com.zhy.interview.vo.TitleInfoVo;
@@ -15,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,6 +34,9 @@ public class TitleController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private ViewRecordService viewRecordService;
 
 
 
@@ -78,6 +85,19 @@ public class TitleController {
 
         List<Title> titleList = titleService.getTitleListbyLike(split, title.getQuestionType(), title);
         titleInfoVo.setTitleList(titleList);
+
+        ViewRecord viewRecord = viewRecordService.getOne(new QueryWrapper<ViewRecord>().eq("user_id", title.getUserId()).eq("title_id", title.getId()));
+        if(viewRecord!=null){
+            viewRecord.setUpdateTime(new Date());
+            viewRecordService.updateById(viewRecord);
+        }else {
+            viewRecord=new ViewRecord();
+            viewRecord.setTitleId(title.getId());
+            viewRecord.setUserId(title.getUserId());
+            viewRecord.setCreateTime(new Date());
+            viewRecord.setUpdateTime(new Date());
+            viewRecordService.save(viewRecord);
+        }
 
         return R.ok().setData(titleInfoVo);
     }
